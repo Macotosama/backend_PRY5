@@ -1,0 +1,1 @@
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\Usuario\Desktop\pry04\backend_PRY5\node-firebase-d105d-firebase-adminsdk-5v5vd-97087fdf70.json"
