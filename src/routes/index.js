@@ -12,8 +12,13 @@ admin.initializeApp({
 const db = admin.database();
 
 router.get('/inicio',(req,res)=>{
-    console.log('Index szzzzz');
-    res.send('recived');
+    db.ref('Jugadores').once('value',(snapshot)=>{
+        const datos = snapshot.val();
+        console.log(datos);
+        res.send(datos);
+    });
+    // console.log(datos);
+    // res.send(datos);
 });
 
 
