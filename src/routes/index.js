@@ -21,6 +21,21 @@ router.get('/inicio',(req,res)=>{
     // res.send(datos);
 });
 
+router.post('/estadisticas',(req,res)=>{
+    db.ref('Estadisticas').once('value',(snapshot)=>{
+        const datos = snapshot.val();
+        console.log(datos);
+        const temp = {
+            jugadores: [{nombre: "a", posicion: 2}, {nombre: "b", posicion: 1}, {nombre: "c", posicion: 3}],
+            pista: "pepe",
+            id: "fsd3",
+            ganador: "b",
+            tiempo: "2:30",
+            vueltas: 6,
+        }
+        res.send(temp);
+    });
+});
 
 router.post('/guardarinfojugadores',(req,res)=>{
     console.log(req.body);
@@ -28,7 +43,8 @@ router.post('/guardarinfojugadores',(req,res)=>{
         nombre: req.body.nombre,
         mejorTiempo: req.body.mejorTiempo
     };
-    console.log(req.body);
+    // console.log('El resultado es =>> ');
+    // console.log(req.body);
     db.ref('Jugadores').push(newJugador);
 
     res.send('recived');

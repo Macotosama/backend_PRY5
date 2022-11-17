@@ -2,9 +2,12 @@ const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const cors = require('cors');
 var bodyParser = require('body-parser');
 
 const app = express();
+app.use(cors());
+
 //settings
 app.set('port',process.env.PORT || 4000);
 
