@@ -14,6 +14,14 @@ admin.initializeApp({
 const db = admin.database();
 
 
+router.get('/buscarpartida/:nombre', async(req, res)=>{
+    
+});
+
+router.get('/crearpartida/:nombre', async(req, res)=>{
+    //en espera
+});
+
 router.get('/inicio',(req,res)=>{
     db.ref('Jugadores').once('value',(snapshot)=>{
         const datos = snapshot.val();
@@ -52,28 +60,6 @@ router.post('/get/estadisticas/byId', function(req,res,next){
       })
       .catch(next);
   });
-
-
-    // var returno = db.ref('Jugadores').orderByChild('idEstadistica').equalTo(req.params.id);
-    // console.log(returno);
-    // res.send(returno);
-
-    // try {
-    //     query = db.collection("Jugadores").; 
-    //     const querySnapShot = await query.get();
-    //     const docs = querySnapShot.docs;
-    //     const response = docs.map((doc)=>({
-    //         Id: doc.id,
-    //         Nombre: doc.nombre,
-    //         posicion:  doc.posicion
-    //     }))
-    //     return res.status(200).json(response); 
-    // } catch(error) {
-    //     console.log(error);
-    //     return res.status(500).send(error);
-    // }
-
-//});
 
 
 router.post('/estadisticas2',(req,res)=>{
