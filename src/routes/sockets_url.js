@@ -1,27 +1,30 @@
 module.exports = function (io) {
   //let users = {};
 
-  io.on('connection', async socket => {
+  io.on('connection', (socket) => {
 
-    let messages = await Chat.find({}).limit(8).sort('-created');
+    console.log(`user come mierda tres mis hdp: ${socket.id}`);
 
-    socket.emit('load old msgs', messages);
+    // let messages = await Chat.find({}).limit(8).sort('-created');
 
-    socket.on('new user', (data, cb) => {
+    // socket.emit('load old msgs', messages);
 
-    });
+    // socket.on('new user', (data, cb) => {
+    //   console.log(data)
+    //   // socket.emit('esperese tantito', 'los voy matar a todos');
+    // });
 
-    // receive a message a broadcasting
-    socket.on('send message', async (data, cb) => {
+    // // receive a message a broadcasting
+    // socket.on('send message', async (data, cb) => {
 
-    });
+    // });
 
-    socket.on('disconnect', data => {
-    });
+    // socket.on('disconnect', data => {
+    // });
 
-    function updateNicknames() {
+    // function updateNicknames() {
 
-    }
+    // }
   });
 
 }
