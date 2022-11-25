@@ -15,7 +15,7 @@ const db = admin.database();
 
 
 router.get('/buscarpartida/:nombre', async(req, res)=>{
-    
+
 });
 
 router.get('/crearpartida/:nombre', async(req, res)=>{

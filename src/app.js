@@ -3,8 +3,7 @@ const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const cors = require('cors');
-const http =  require('http');
-const socketio = require('socket.io');
+
 var bodyParser = require('body-parser');
 
 const app = express();
@@ -17,12 +16,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-//=>Creacion del servidor
-const socketServer = http.createServer(app);
-const io = socketio.listen(socketServer);
-io.on('connection',socketS=>{
-    console.log('usuario conectado');
-});
 
 app.use(bodyParser.json());
 //midelwares
