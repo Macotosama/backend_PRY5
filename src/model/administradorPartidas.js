@@ -4,6 +4,7 @@ var Jugador = require('../model/jugador');
 //import Jugador from './jugador';
 
 class Administrador {
+    partidas = [];
     Administrador() {
         this.partidas = [];
     }
@@ -14,7 +15,8 @@ class Administrador {
 
     existPartida(name) {
         let res = this.partidas.indexOf(partida => partida.nameParty === name);
-        if (res != -1) {
+        // console.log(`numero: ${res}`);
+        if (res == -1) {
             return true;
         }
         return false;

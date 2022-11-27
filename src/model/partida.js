@@ -1,4 +1,8 @@
 class Partida{
+    idHost;
+    nameParty;
+    jugadores;
+    
     Partida(idHost, nameParty, jugador){
         this.idHost = idHost;
         this.nameParty = nameParty

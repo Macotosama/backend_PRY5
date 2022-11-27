@@ -5,8 +5,8 @@ var Administrador = require('../model/administradorPartidas')
 //import Jugador from './jugador';
 //import Administrador from './administradorPartidas';
 
+const administrador = new Administrador();
 module.exports = function (io) {
-  const administrador = new Administrador();
 
   io.on('connection', (socket) => {
 
@@ -14,14 +14,23 @@ module.exports = function (io) {
       console.log(`Garrote ${dato}`);
     })
 
-    socket.on('createParty', async (name) => {
-      if (administrador.existPartida(name)) {
-        socket.join(name);
-        administrador.setPartida(new Partida(socket.id ,name));
+    socket.on('createParty', async ({name, username}) => {
+      if (administrador.existPartida(datos.name)) {
+        socket.join(datos.name);
+        console.log("runcreada");
+        administrador.setPartida(new Partida(socket.id ,name, new Jugador(username, socket.id)));
       }
     })
 
-    console.log(`user come mierda tres mis hdp: ${socket.id}`);
+    socket.on('unionParty', async (name) => {
+      if (!administrador.existPartida(name)) {
+        socket.join(name);
+        administrador.findPartida(name).nuevoJuagador();
+
+      }
+    })
+
+    console.log(`ingresa una solicitud atravez del socket: ${socket.id}`);
 
     // let messages = await Chat.find({}).limit(8).sort('-created');
 
