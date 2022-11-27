@@ -1,14 +1,13 @@
-class partida{
-    partida(){
-        this.HostNombre = "";
-        this.direccion = 0;
-        this.posicionEnCarrera = 0;
-    }
-    getNom(){
-        return this.Nombre;
+class Partida{
+    Partida(idHost, nameParty, jugador){
+        this.idHost = idHost;
+        this.nameParty = nameParty
+        this.jugadores = [jugador]
     }
 
-
+    nuevoJuagador(jugador) {
+        this.jugadores.push(jugador);
+    }
 }
 
-module.exports = partida;
+module.exports = Partida;

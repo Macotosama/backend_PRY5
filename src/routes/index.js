@@ -14,6 +14,7 @@ admin.initializeApp({
 const db = admin.database();
 
 
+
 router.get('/buscarpartida/:nombre', async(req, res)=>{
 
 });
