@@ -5,7 +5,7 @@ var Jugador = require('../model/jugador');
 
 class Administrador {
     partidas = [];
-    Administrador() {
+    constructor() {
         this.partidas = [];
     }
 
@@ -25,6 +25,25 @@ class Administrador {
     setPartida(partida) {
         this.partidas.push(partida);
         // return this.
+    }
+
+    listPartidas() {
+        var res = [];
+        for (let i = 0; i < this.partidas.length; i++) {
+            res.push({
+                name: this.partidas[i].nameParty,
+                jugadores: this.partidas[i].jugadores.length,
+                vueltas: this.partidas[i].vueltas,
+            });
+        }
+        // var res = this.partidas.map(partida => {
+        //     name: partida.nameParty,
+        //     jugadores: partida.jugadores,
+        //     vueltas: partida.vueltas,
+        //     });
+        // var res = this.partidas.map((x) => {name: x.nameParty});
+        console.log(res);
+        return res;
     }
 }
 

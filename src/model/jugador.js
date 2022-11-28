@@ -1,5 +1,5 @@
 class Jugador{
-    Jugador(nombre, idJugador){
+    constructor(nombre, idJugador){
         this.nombre = nombre;
         this.idJugador = idJugador;
         this.poX = 0;

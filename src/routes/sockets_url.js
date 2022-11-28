@@ -1,3 +1,4 @@
+// import Partida from '../model/partida';
 var Partida = require('../model/partida');
 var Jugador = require('../model/jugador');
 var Administrador = require('../model/administradorPartidas')
@@ -14,20 +15,26 @@ module.exports = function (io) {
       console.log(`Garrote ${dato}`);
     })
 
-    socket.on('createParty', async ({name, username}) => {
-      if (administrador.existPartida(datos.name)) {
-        socket.join(datos.name);
+    socket.on('createParty', async ({room, name, cantidadvueltas, cantidadjugadores}) => {
+      console.log("mas pene");
+      if (administrador.existPartida(room)) {
+        socket.join(room);
         console.log("runcreada");
-        administrador.setPartida(new Partida(socket.id ,name, new Jugador(username, socket.id)));
+        administrador.setPartida(new Partida(socket.id ,room, cantidadvueltas, cantidadjugadores, new Jugador(name, socket.id)));
       }
     })
 
-    socket.on('unionParty', async (name) => {
-      if (!administrador.existPartida(name)) {
-        socket.join(name);
-        administrador.findPartida(name).nuevoJuagador();
+    socket.on('unionParty', async ({room, name}) => {
+      console.log("pene ");
+      if (!administrador.existPartida(room)) {
+        socket.join(room);
+        administrador.findPartida(room).nuevoJuagador(name, socket.id);
 
       }
+    })
+
+    socket.on('listaPartidas', async (name) => {
+      socket.emit('partidas', administrador.listPartidas());
     })
 
     console.log(`ingresa una solicitud atravez del socket: ${socket.id}`);
